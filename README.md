@@ -123,12 +123,7 @@ npm install express mysql mysql2 cors nodemon
     ```bash
     npm install
     ```
-### Caso não funcione instale individualmente cada uma
-
-```bash
-npm install express mysql mysql2 cors nodemon
-```
-
+    
 Dependências do Frontend:
 
 ```json
