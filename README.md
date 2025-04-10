@@ -15,7 +15,7 @@ Antes de começar, certifique-se de ter instalado:
 ## Clonando o repositório
 
 ```bash
-git clone <URL_DO_REPOSITÓRIO>
+git clone (https://github.com/BrenoOrtiz/Trabalho1)
 cd Trabalho1
 ```
 
