@@ -38,7 +38,7 @@ cd Trabalho1
     );
     ```
 4. Insira dados da tabela:
-   ```
+   ```sql
     INSERT INTO `usuarios` VALUES 
       (1,'João',30,'11111111111'),
       (2,'Maria',25,'22222222222'),
@@ -129,9 +129,9 @@ npm install express mysql mysql2 cors nodemon
 npm install express mysql mysql2 cors nodemon
 ```
 
-    Dependências do Frontend:
+Dependências do Frontend:
 
-    ```json
+```json
     "dependencies": {
        "@testing-library/dom": "^10.4.0",
        "@testing-library/jest-dom": "^6.6.3",
@@ -143,7 +143,7 @@ npm install express mysql mysql2 cors nodemon
        "react-scripts": "5.0.1",
        "web-vitals": "^2.1.4"
     }
-    ```
+```
 
 ## Executando o Projeto
 
