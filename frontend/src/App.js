@@ -1,40 +1,57 @@
-
-import './App.css';
-import { useState, useEffect } from 'react';
-import DataList from './components/dataList.jsx'
-import Form from './components/Form.jsx'
-
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import UserList from "./components/UserList";
+import UserListView from "./components/UserListView";
+import UserDetail from "./components/UserDetail";
+import Form from "./components/Form";
+import { useState } from "react";
 
 function App() {
+    const [modal, setModal] = useState(false);
+    const [editUserID, setEditUserID] = useState(-1);
 
-  const [modal, setModal] = useState(false)
-  const [data, setData] = useState([])
-  const [editUserID, setEditUserID] = useState(-1)
+    function toggleModal(userId) {
+        setModal(!modal);
+        setEditUserID(userId);
+    }
 
-
-  useEffect(() => {
-        fetch("http://localhost:8800/")
-          .then((response) => response.json())
-          .then((data) => {
-            setData(data);
-          });
-    }, []);
-
-
-  function toggleModal(userId) {
-    setModal(!modal)
-    setEditUserID(userId)
-  }
-  
-  return (
-    <div className="App">
-      <h1>CRUD</h1>
-        <button className="add-btn" type="button" onClick={() => toggleModal(-1)}>Adicionar</button>
-      <DataList data={data} handleModal={toggleModal} />
-      {modal && <Form userid={editUserID}/>}
-      
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <h1>CRUD App</h1>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <>
+                                <div className="actions-bar">
+                                    <button
+                                        className="add-btn"
+                                        type="button"
+                                        onClick={() => toggleModal(-1)}
+                                    >
+                                        Adicionar
+                                    </button>
+                                    <Link to="/view" className="view-link">
+                                        Visualização
+                                    </Link>
+                                </div>
+                                <UserList handleModal={toggleModal} />
+                                {modal && (
+                                    <Form
+                                        userid={editUserID}
+                                        closeModal={() => setModal(false)}
+                                    />
+                                )}
+                            </>
+                        }
+                    />
+                    <Route path="/view" element={<UserListView />} />
+                    <Route path="/user/:id" element={<UserDetail />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
